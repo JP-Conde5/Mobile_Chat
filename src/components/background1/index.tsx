@@ -1,12 +1,12 @@
 import { View, ImageBackground } from 'react-native';
 import { styles } from './style'
 
-interface IBackground{
+export interface IBackground{
     children: React.ReactNode
 }
 
-export function Background({children}:IBackground){
-    const background = require('../../assets/back.png')
+export function Background1({children}:IBackground){
+    const background = require('../../assets/back1.png')
     return(
         <ImageBackground style={styles.container} source={background}>
             <View style={styles.background}>

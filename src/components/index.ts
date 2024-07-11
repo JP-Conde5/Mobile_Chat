@@ -1,0 +1,5 @@
+export { Header as ComponentHeader } from './header'
+export { Footer as ComponentFooter } from './footer'
+export { Background1 as ComponentBackground1 } from './background1'
+export { Background2 as ComponentBackground2 } from './background2' 
+export { Title as ComponentTitle } from './title'

@@ -1,5 +1,5 @@
 import { StackNavigationProp, createStackNavigator } from "@react-navigation/stack"
-//import { ScreenSlide1, ScreenSlide2, ScreenSlide3, ScreenSlide4 } from '../screens/index'
+import { ScreenSlide1, ScreenSlide2, ScreenSlide3} from '../screens/index'
 
 type MenuStackParam = {
     Slide1: undefined
@@ -9,7 +9,8 @@ type MenuStackParam = {
 
 type MenuScreenNavigation = StackNavigationProp<MenuStackParam, "Slide1">
 export type MenuStackTypes = {
-    navigation: MenuScreenNavigation
+    navigation?: MenuScreenNavigation
+    page: number
 }
 
 export function MenuStack() {
@@ -21,7 +22,7 @@ export function MenuStack() {
         }}>
             <Stack.Screen name="Slide1" component={ScreenSlide1}/>
             <Stack.Screen name="Slide2" component={ScreenSlide2}/>
-            <Stack.Screen name="Slide3" component={ScreenSlide2}/>
+            <Stack.Screen name="Slide3" component={ScreenSlide3}/>
         </Stack.Navigator>
     )
 }
