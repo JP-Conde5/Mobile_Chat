@@ -5,14 +5,13 @@ type MenuStackParam = {
     Slide1: undefined
     Slide2: undefined
     Slide3: undefined
-    login: undefined
-    register: undefined
+    Login: undefined
+    Register: undefined
 }
 
-type MenuScreenNavigation = StackNavigationProp<MenuStackParam, "Slide1">
+export type MenuScreenNavigation = StackNavigationProp<MenuStackParam, "Slide2">
 export type MenuStackTypes = {
-    navigation?: MenuScreenNavigation
-    page: number
+    navigation: MenuScreenNavigation
 }
 
 export function MenuStack() {
@@ -20,13 +19,14 @@ export function MenuStack() {
     return(
         <Stack.Navigator screenOptions={{
             animationEnabled: true,
-            gestureEnabled: true
+            gestureEnabled: true,
+            headerShown: false,
         }}>
             <Stack.Screen name="Slide1" component={ScreenSlide1}/>
             <Stack.Screen name="Slide2" component={ScreenSlide2}/>
             <Stack.Screen name="Slide3" component={ScreenSlide3}/>
-            <Stack.Screen name="login" component={ScreenLogin}/>
-            <Stack.Screen name="register" component={ScreenRegister}/>
+            <Stack.Screen name="Login" component={ScreenLogin}/>
+            <Stack.Screen name="Register" component={ScreenRegister}/>
         </Stack.Navigator>
     )
 }

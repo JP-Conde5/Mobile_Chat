@@ -3,4 +3,6 @@ export const colors ={
     primaryTransp: '#2FCCE1AA',
     secondary: '#9F4AE2',
     darkSecondary: '#9F4AE240',
+    white: '#FFFFFF',
+    black: '#000000',
 }

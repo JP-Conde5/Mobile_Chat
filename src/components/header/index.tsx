@@ -1,12 +1,13 @@
 import React from 'react';
 import { View, Text } from 'react-native';
-import { styles } from './style'
+import { styles } from './style';
+import {Title} from '../title';
 
 export function Header(){
     const title = require('../../assets/titulo.png');
     return( 
         <View style={styles.container}>
-            <Text style={styles.title}>Chatzapp</Text>
+            <Title/>
         </View>
     )
 }

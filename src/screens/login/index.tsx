@@ -3,13 +3,14 @@ import { KeyboardAvoidingView, View, Text, TextInput, Alert, TouchableOpacity, I
 import { styles } from "./style";
 import { MaterialIcons, Entypo } from "@expo/vector-icons"
 import { useState } from "react";
+import { MenuStackTypes } from "../../navigation/MenuStack.navigation";
 
 export interface IAuthenticate {
     email?:string;
     password?:string;
 }
 
-export function Login({ navigation }: LoginTypes){
+export function Login({navigation}:MenuStackTypes){
     const [data, setData] = useState<IAuthenticate>()
     async function handleSignIn(){
         if(data?.email && data.password){
@@ -28,13 +29,13 @@ export function Login({ navigation }: LoginTypes){
     const cancelar = require('../../assets/cancelar.png')
     return(
         <ComponentBackground2>
-            <KeyboardAvoidingView>
+            <KeyboardAvoidingView style={styles.container}>
                 <ComponentHeader/>
                 <View style={styles.main}>
                     <View style={styles.window}>
-                        <Text>Login</Text>
+                        <Text style={styles.title}>Login</Text>
                         <View>
-                            <Text>E-mail</Text>
+                            <Text style={styles.text}>E-mail</Text>
                             <TextInput
                                 keyboardType="email-address"
                                 autoCapitalize="none"
@@ -43,7 +44,7 @@ export function Login({ navigation }: LoginTypes){
                             </TextInput>
                         </View>
                         <View>
-                            <Text>Senha</Text>
+                            <Text style={styles.text}>Senha</Text>
                             <TextInput
                                 secureTextEntry={true}
                                 autoCapitalize="none"
@@ -51,11 +52,11 @@ export function Login({ navigation }: LoginTypes){
                                 <Entypo name="key"/>
                             </TextInput>
                         </View>
-                        <Text>Não tem uma conta?</Text>
-                        <TouchableOpacity onPress={() => handleRegister}><Text>Crie uma!</Text></TouchableOpacity>
+                        <Text style={styles.text}>Não tem uma conta?</Text>
+                        <TouchableOpacity onPress={() => handleRegister}><Text style={styles.link}>Crie uma!</Text></TouchableOpacity>
                         <View>
-                            <TouchableOpacity><Image source={confirm}/></TouchableOpacity>
-                            <TouchableOpacity><Image source={cancelar}/></TouchableOpacity>
+                            <TouchableOpacity><Image style={styles.image} source={confirm}/></TouchableOpacity>
+                            <TouchableOpacity><Image style={styles.image} source={cancelar}/></TouchableOpacity>
                         </View>
                     </View>
                 </View>

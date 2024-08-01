@@ -1,24 +1,21 @@
 import React from "react";
 import { View, Image, Text, TouchableOpacity } from "react-native";
 import { ComponentTitle, ComponentFooter, ComponentBackground1 } from "../../components";
+import { styles } from "./style";
+import { MenuStackTypes } from "../../navigation/MenuStack.navigation";
 
-
-
-export function Slide3({navigation} : LoginTypes){
+export function Slide3({navigation}:MenuStackTypes){
     const padlock = require('../../assets/cadeado.png')
-    const x = require('../../assets/x.png')
-    function handleLogin(){
-        navigation.navigate("Login")
-    }
+    const start = require('../../assets/start.png')
     return(
         <ComponentBackground1>
-            <View>
+            <View style={styles.container}>
                 <ComponentTitle/>
-                <Image source={padlock}/>
-                <Text>Suas mensagens são protegidas de ponto-a-ponta</Text>
-                <TouchableOpacity onPress={()=>}><Image source={x}/></TouchableOpacity>
+                <Image style={styles.image} source={padlock}/>
+                <Text style={styles.text}>Suas mensagens são protegidas de ponto-a-ponta</Text>
+                <TouchableOpacity onPress={()=>navigation.navigate("Login")}><Image style={styles.image2} source={start}/></TouchableOpacity>
+                <ComponentFooter navigation={navigation} page={3}/>
             </View>
-            <ComponentFooter page={3}/>
         </ComponentBackground1>
     )
 }
