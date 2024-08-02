@@ -16,7 +16,7 @@ export function Login({navigation}:MenuStackTypes){
         if(data?.email && data.password){
             console.log(data)
         }else{
-            Alert.alert("Preencha todos os cmpos!!!");
+            Alert.alert("Preencha todos os campos!!!");
         }
     }
     function handleRegister(){
@@ -36,30 +36,38 @@ export function Login({navigation}:MenuStackTypes){
                         <Text style={styles.title}>Login</Text>
                         <View>
                             <Text style={styles.text}>E-mail</Text>
-                            <TextInput
-                                keyboardType="email-address"
-                                autoCapitalize="none"
-                                onChangeText={(letter) => handleChange({email:letter})}>
-                                <MaterialIcons name="email"/>
-                            </TextInput>
+                            <View style={styles.spaceWrite}>
+                                <MaterialIcons name="email" size={20}/>
+                                <TextInput
+                                    style={styles.write}
+                                    keyboardType="email-address"
+                                    autoCapitalize="none"
+                                    onChangeText={(letter) => handleChange({email:letter})}>
+                                </TextInput>
+                            </View>
                         </View>
                         <View>
                             <Text style={styles.text}>Senha</Text>
-                            <TextInput
-                                secureTextEntry={true}
-                                autoCapitalize="none"
-                                onChangeText={(letter) => handleChange({password:letter})}>
-                                <Entypo name="key"/>
-                            </TextInput>
+                            <View style={styles.spaceWrite}>
+                                <Entypo name="key" size={20}/>
+                                <TextInput
+                                    secureTextEntry={true}
+                                    autoCapitalize="none"
+                                    onChangeText={(letter) => handleChange({password:letter})}>
+                                </TextInput>
+                            </View>
                         </View>
-                        <Text style={styles.text}>Não tem uma conta?</Text>
-                        <TouchableOpacity onPress={() => handleRegister}><Text style={styles.link}>Crie uma!</Text></TouchableOpacity>
                         <View>
-                            <TouchableOpacity><Image style={styles.image} source={confirm}/></TouchableOpacity>
+                            <Text style={styles.text}>Não tem uma conta?</Text>
+                            <TouchableOpacity onPress={handleRegister}><Text style={styles.link}>Crie uma!</Text></TouchableOpacity>
+                        </View>
+                        <View style={styles.bottons}>
+                            <TouchableOpacity onPress={handleSignIn}><Image style={styles.image} source={confirm}/></TouchableOpacity>
                             <TouchableOpacity><Image style={styles.image} source={cancelar}/></TouchableOpacity>
                         </View>
                     </View>
                 </View>
+                <View style={styles.footer}/>
             </KeyboardAvoidingView>
         </ComponentBackground2>
     )

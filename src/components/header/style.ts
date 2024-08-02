@@ -6,6 +6,10 @@ export const styles = StyleSheet.create({
         backgroundColor: colors.secondary,
         justifyContent: 'center',
         alignItems: 'center',
-        flex: 0.15, 
+        width: 700, 
+        borderColor: colors.secondary,
+        borderWidth: 10,
+        shadowColor: colors.black,
+        shadowRadius: 20,
     },
 })

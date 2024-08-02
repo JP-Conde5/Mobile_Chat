@@ -5,6 +5,6 @@ export const styles = StyleSheet.create({
     title:{
         color: colors.primary,
         fontWeight: '500',
-        fontSize: 70,
+        fontSize: 60,
     }
 })
