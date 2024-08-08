@@ -4,17 +4,27 @@ import { styles } from "./style";
 import { MaterialIcons, Entypo } from "@expo/vector-icons"
 import { useState } from "react";
 import { MenuStackTypes } from "../../navigation/MenuStack.navigation";
-
+import { useAuth } from "../../hook";
+import { AxiosError } from "axios";
 export interface IAuthenticate {
     email?:string;
     password?:string;
 }
 
 export function Login({navigation}:MenuStackTypes){
-    const [data, setData] = useState<IAuthenticate>()
+    const [data, setData] = useState<IAuthenticate>(/*{} as IAuthenticate*/)
+    const {signIn, setLoading} = useAuth()
     async function handleSignIn(){
         if(data?.email && data.password){
-            console.log(data)
+            setLoading(true)
+            try{
+                await signIn(data)
+            } catch(error){
+                const err = error as AxiosError
+                const msg = err.response?.data as string
+                Alert.alert(msg)
+            }
+            setLoading(false)
         }else{
             Alert.alert("Preencha todos os campos!!!");
         }
@@ -67,8 +77,8 @@ export function Login({navigation}:MenuStackTypes){
                         </View>
                     </View>
                 </View>
-                <View style={styles.footer}/>
             </KeyboardAvoidingView>
+            <View style={styles.footer}/>
         </ComponentBackground2>
     )
 }

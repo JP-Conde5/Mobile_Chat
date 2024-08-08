@@ -55,7 +55,7 @@ export const styles = StyleSheet.create({
         marginTop: 20,
     },
     write:{
-        width: 165,
+        width: 200,
     },
     footer:{
         width: 400,

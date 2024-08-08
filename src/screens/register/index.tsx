@@ -1,10 +1,15 @@
+import React from 'react';
 import { useState } from 'react';
 import { KeyboardAvoidingView, View, Text, TextInput, Alert, TouchableOpacity, Image} from 'react-native';
 import { MaterialIcons, Entypo, Ionicons } from '@expo/vector-icons';
 import { Background2 } from '../../components/background2';
 import { MenuStackTypes } from '../../navigation/MenuStack.navigation';
 import { styles } from './style';
-import { ComponentHeader } from '../../components'
+import { ComponentHeader } from '../../components';
+import { useAuth } from "../../hook";
+import { AxiosError } from "axios";
+import {apiUser} from '../../services/data'
+
 export interface IRegister{
     name?:string
     email?:string
@@ -13,9 +18,22 @@ export interface IRegister{
 
 export function Register({ navigation }: MenuStackTypes){
     const [data, setData] = useState<IRegister>();
+    const {setLoading} = useAuth()
     async function handleRegister(){
         if(data?.email && data.name && data.password){
-            console.log(data)
+            setLoading(true)
+            try{
+                console.log(data)
+                const response = await apiUser.register(data)
+                Alert.alert(`${response.data.name} cadastrado!`)
+                navigation.navigate("Login")
+            }catch(error){
+                const err = error as AxiosError
+                console.log(err.response?.data)
+                //const msg = err.response?.data as string
+                //Alert.alert(msg)
+            }
+            setLoading(false)
         }else{
             Alert.alert("Preencha todos os campos")
         }
@@ -53,7 +71,7 @@ export function Register({ navigation }: MenuStackTypes){
                                     style={styles.write}
                                     autoCapitalize='none'
                                     keyboardType='email-address'
-                                    onChangeText={(letter) => handleChange({name:letter})}>
+                                    onChangeText={(letter) => handleChange({email:letter})}>
                                 </TextInput>
                             </View>
                         </View>
@@ -75,8 +93,8 @@ export function Register({ navigation }: MenuStackTypes){
                         </View>
                     </View>
                 </View>
-                <View style={styles.footer}/>
             </KeyboardAvoidingView>
+            <View style={styles.footer}/>
         </Background2>
     )
 }
