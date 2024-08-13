@@ -2,7 +2,7 @@ import React from "react";
 import { View, Image, Text, TouchableOpacity } from "react-native";
 import { ComponentTitle, ComponentFooter, ComponentBackground1 } from "../../components";
 import { styles } from "./style";
-import { MenuStackTypes } from "../../navigation/MenuStack.navigation";
+import { MenuStackTypes } from "../../navigation/MenuInitial.navigation";
 
 export function Slide3({navigation}:MenuStackTypes){
     const padlock = require('../../assets/cadeado.png')

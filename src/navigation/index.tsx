@@ -1,11 +1,18 @@
 import * as React from 'react';
-import { MenuStack } from './MenuStack.navigation'
+import { MenuInitial } from './MenuInitial.navigation'
+import { MessageNavigation } from './message.navigation'
 import { NavigationContainer } from '@react-navigation/native'
+import { useAuth } from '../hook';
+import { ComponentLoading } from '../components';
 
 export function Navigation(){
+    const { user, loading } = useAuth()
+    if(loading){
+        return <ComponentLoading/>
+    }
     return(
         <NavigationContainer>
-            <MenuStack/>
+            {user?.token ? <MenuInitial/> : <MessageNavigation/>}
         </NavigationContainer>
     );
 }

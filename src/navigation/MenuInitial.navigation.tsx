@@ -14,7 +14,7 @@ export type MenuStackTypes = {
     navigation: MenuScreenNavigation
 }
 
-export function MenuStack() {
+export function MenuInitial() {
     const Stack = createStackNavigator<MenuStackParam>();
     return(
         <Stack.Navigator screenOptions={{

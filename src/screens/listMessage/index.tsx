@@ -2,12 +2,14 @@ import {useEffect, useState} from 'react'
 import {IResponseMessage} from '../../services/data/Message'
 import { useAuth } from '../../hook'
 import { apiMessage } from '../../services/data'
-import { View, Text, KeyboardAvoidingView, TextInput } from 'react-native'
+import { View, Text, KeyboardAvoidingView, TextInput, TouchableOpacity } from 'react-native'
 import { FlatList } from 'react-native-gesture-handler'
 import { Background2 } from '../../components/background2'
 import { ComponentBackground2, ComponentHeader } from '../../components'
+import { MessageTypes } from '../../navigation/message.navigation'
+import { styles } from './style'
 
-export function listMessage(){
+export function ListMessage({navigation}:MessageTypes){
     const [message, setMessage] = useState<IResponseMessage[]>([])
     const { setLoading } = useAuth()
     useEffect(() => {
@@ -29,6 +31,9 @@ export function listMessage(){
             </View>
         )
     })
+    function handleCadMessage(){
+        navigation.navigate('CadMessage')
+    }
     return(
         <ComponentBackground2>
             <KeyboardAvoidingView>
@@ -42,6 +47,7 @@ export function listMessage(){
                         />
                     )
                 }
+            <TouchableOpacity style={styles.button} onPress={handleCadMessage}></TouchableOpacity>
             </KeyboardAvoidingView>
             <View/>
         </ComponentBackground2>
