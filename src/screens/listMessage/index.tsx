@@ -1,10 +1,10 @@
+import React from 'react'
 import {useEffect, useState} from 'react'
 import {IResponseMessage} from '../../services/data/Message'
 import { useAuth } from '../../hook'
 import { apiMessage } from '../../services/data'
-import { View, Text, KeyboardAvoidingView, TextInput, TouchableOpacity } from 'react-native'
+import { View, Text, Image, TouchableOpacity } from 'react-native'
 import { FlatList } from 'react-native-gesture-handler'
-import { Background2 } from '../../components/background2'
 import { ComponentBackground2, ComponentHeader } from '../../components'
 import { MessageTypes } from '../../navigation/message.navigation'
 import { styles } from './style'
@@ -19,25 +19,28 @@ export function ListMessage({navigation}:MessageTypes){
             setMessage(response.data)
         }
         setLoading(false)
-        loadMessage()
+        navigation.addListener("focus", () => loadMessage())
     }, [])
     interface itemMessage{
         item: IResponseMessage
     }
     const renderItem = (({item}:itemMessage) => {
         return(
-            <View>
-                <Text>{item.message}</Text>
+            <View style={styles.item}>
+                <Text style={styles.name}>{item.user.name}</Text>
+                <Text style={styles.message}>{item.message}</Text>
             </View>
         )
     })
     function handleCadMessage(){
         navigation.navigate('CadMessage')
     }
+    const cad = require("../../assets/plus.png") 
     return(
         <ComponentBackground2>
-            <KeyboardAvoidingView>
+            <View style={styles.container}>
                 <ComponentHeader/>
+                <View>
                 {
                     message.length > 0 && (
                         <FlatList
@@ -47,9 +50,10 @@ export function ListMessage({navigation}:MessageTypes){
                         />
                     )
                 }
-            <TouchableOpacity style={styles.button} onPress={handleCadMessage}></TouchableOpacity>
-            </KeyboardAvoidingView>
-            <View/>
+                </View>
+                <TouchableOpacity style={styles.button} onPress={() => handleCadMessage()}><Image style={styles.image} source={cad}/></TouchableOpacity>
+            </View>
+            <View style={styles.footer}/>
         </ComponentBackground2>
     )
 }

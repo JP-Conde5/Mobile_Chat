@@ -12,7 +12,7 @@ export function Navigation(){
     }
     return(
         <NavigationContainer>
-            {user?.token ? <MenuInitial/> : <MessageNavigation/>}
+            {user?.token ? <MessageNavigation/> : <MenuInitial/> }
         </NavigationContainer>
     );
 }

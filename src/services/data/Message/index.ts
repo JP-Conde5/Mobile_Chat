@@ -2,11 +2,13 @@ import {api} from '../../api'
 
 export interface IMessage{
     message?: string
+    title?: string
 }
 
 export interface IResponseMessage{
     id: number
     user_id: number
+    title: string
     message: string
     create_at: string
     user:{

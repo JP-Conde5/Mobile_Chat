@@ -1,11 +1,12 @@
 import { KeyboardAvoidingView, View, Text, TextInput, Alert, Image, TouchableOpacity } from "react-native";
-import { ComponentBackground2 } from "../../components";
+import { ComponentBackground2, ComponentHeader } from "../../components";
 import { IMessage } from '../../services/data/Message'
 import { useState } from "react";
 import { useAuth } from "../../hook";
 import { apiMessage } from "../../services/data";
 import { MessageTypes } from "../../navigation/message.navigation";
 import { AxiosError } from "axios";
+import { styles } from './style'
 
 export function CadMessage({navigation}:MessageTypes){
     const [data, setData] = useState<IMessage>()
@@ -14,7 +15,7 @@ export function CadMessage({navigation}:MessageTypes){
         setData({...data, ...itemMessage})
     }
     async function handleCadMessage(){
-        if(data?.message){
+        if(data?.message && data.title){
             setLoading(true)
             try{
                 await apiMessage.store(data)
@@ -36,17 +37,37 @@ export function CadMessage({navigation}:MessageTypes){
     const cancel = require('../../assets/cancelar.png')
     return(
         <ComponentBackground2>
-            <KeyboardAvoidingView>
-                <Text>Cadastrar Mensagem</Text>
-                <View>
-                    <Text>Mensagem</Text>
+            <ComponentHeader/>
+            <KeyboardAvoidingView style={styles.container}>
+                <View style={styles.window}>
+                    <Text style={styles.title}>Cadastrar Mensagem</Text>
+                    <View>
+                        <View>
+                            <Text style={styles.text}>Titulo</Text>
+                            <TextInput
+                                style={styles.write}
+                                placeholder="Cumprimento"
+                                onChangeText={(letter) => handleChange({title:letter})}>
+                            </TextInput>
+                        </View>
+                        <View>
+                        <Text style={styles.text}>Mensagem</Text>
                         <TextInput
+                            style={styles.write}
+                            multiline={true}
+                            numberOfLines={4}
+                            placeholder="Oiii!!"
                             onChangeText={(letter) => handleChange({message:letter})}>
                         </TextInput>
+                        </View>
+                    </View>
+                    <View style={styles.bottons}>
+                        <TouchableOpacity onPress={handleCadMessage}><Image style={styles.image} source={confirm}/></TouchableOpacity>
+                        <TouchableOpacity onPress={handleListMessage}><Image style={styles.image} source={cancel}/></TouchableOpacity>
+                    </View>
                 </View>
-                <TouchableOpacity onPress={handleCadMessage}><Image source={confirm}/></TouchableOpacity>
-                <TouchableOpacity onPress={handleListMessage}><Image source={cancel}/></TouchableOpacity>
             </KeyboardAvoidingView>
+            <View style={styles.footer}/>
         </ComponentBackground2>
     )
 }

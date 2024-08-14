@@ -61,6 +61,7 @@ export function Login({navigation}:MenuStackTypes){
                             <View style={styles.spaceWrite}>
                                 <Entypo name="key" size={20}/>
                                 <TextInput
+                                    style={styles.write}
                                     secureTextEntry={true}
                                     autoCapitalize="none"
                                     onChangeText={(letter) => handleChange({password:letter})}>

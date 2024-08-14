@@ -9,7 +9,7 @@ type MenuStackParam = {
     Register: undefined
 }
 
-export type MenuScreenNavigation = StackNavigationProp<MenuStackParam, "Slide2">
+export type MenuScreenNavigation = StackNavigationProp<MenuStackParam, "Slide1">
 export type MenuStackTypes = {
     navigation: MenuScreenNavigation
 }
