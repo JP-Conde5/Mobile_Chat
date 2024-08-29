@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { KeyboardAvoidingView, View, Text, TextInput, Alert, TouchableOpacity, Image} from 'react-native';
 import { MaterialIcons, Entypo, Ionicons } from '@expo/vector-icons';
 import { Background2 } from '../../components/background2';
-import { MenuStackTypes } from '../../navigation/MenuInitial.navigation';
+import { MenuStackTypes } from '../../navigation/menuInitial.navigation';
 import { styles } from './style';
 import { ComponentHeader } from '../../components';
 import { useAuth } from "../../hook";

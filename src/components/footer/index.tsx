@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Image, TouchableOpacity } from 'react-native';
-import { MenuScreenNavigation } from '../../navigation/MenuInitial.navigation';
+import { MenuScreenNavigation } from '../../navigation/menuInitial.navigation';
 import { styles } from './style';
 
 export interface IFooter{

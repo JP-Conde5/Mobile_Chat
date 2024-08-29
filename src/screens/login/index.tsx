@@ -3,7 +3,7 @@ import { KeyboardAvoidingView, View, Text, TextInput, Alert, TouchableOpacity, I
 import { styles } from "./style";
 import { MaterialIcons, Entypo } from "@expo/vector-icons"
 import { useState } from "react";
-import { MenuStackTypes } from "../../navigation/MenuInitial.navigation";
+import { MenuStackTypes } from "../../navigation/menuInitial.navigation";
 import { useAuth } from "../../hook";
 import { AxiosError } from "axios";
 export interface IAuthenticate {

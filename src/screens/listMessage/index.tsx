@@ -53,7 +53,6 @@ export function ListMessage({navigation}:MessageTypes){
                 </View>
                 <TouchableOpacity style={styles.button} onPress={() => handleCadMessage()}><Image style={styles.image} source={cad}/></TouchableOpacity>
             </View>
-            <View style={styles.footer}/>
         </ComponentBackground2>
     )
 }

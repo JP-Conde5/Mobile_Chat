@@ -1,20 +1,37 @@
-import {createStackNavigator, StackNavigationProp} from '@react-navigation/stack'
+import {BottomTabNavigationProp, createBottomTabNavigator} from '@react-navigation/bottom-tabs'
 import {ScreenCam} from '../screens'
-import {}
-type MessageStackParamList = {
-    ListMessage: undefined
-    CadMessage: undefined
+import {MessageNavigation} from './message.navigation'
+import { Entypo } from '@expo/vector-icons'
+import { colors } from '../styles/GlobalStyle'
+
+type MesCamTabParamList = {
+    Mensagem: undefined
+    Camera: undefined
 }
-type MessageScreenNavigationProp = StackNavigationProp<MessageStackParamList,'ListMessage'>
-export type MessageTypes ={
-    navigation: MessageScreenNavigationProp
+type MesCamScreenNavigationProp = BottomTabNavigationProp<MesCamTabParamList,'Mensagem'>
+export type MesCamTypes ={
+    navigation: MesCamScreenNavigationProp
 }
-export function MessageNavigation(){
-    const Stack = createStackNavigator<MessageStackParamList>() 
+export function MesCamNavigation(){
+    const Tab = createBottomTabNavigator<MesCamTabParamList>() 
     return(
-        <Stack.Navigator screenOptions={{headerShown: false}}>
-            <Stack.Screen name='ListMessage' component={ScreenListMessage}/>
-            <Stack.Screen name='CadMessage' component={ScreenCadMessage}/>
-        </Stack.Navigator>
+        <Tab.Navigator screenOptions={{
+            headerShown: false,
+            tabBarActiveBackgroundColor: colors.darkSecondary,
+            tabBarInactiveBackgroundColor: colors.secondary,
+            tabBarActiveTintColor: colors.primary,
+            tabBarInactiveTintColor: colors.primary
+        }}>
+            <Tab.Screen name='Mensagem' component={MessageNavigation} options={{
+                tabBarIcon: ()=> (
+                    <Entypo name="message" size={24} color={colors.primary}/>
+                ),
+            }}/>
+            <Tab.Screen name='Camera' component={ScreenCam} options={{
+                tabBarIcon: () => (
+                    <Entypo name="camera" size={24} color={colors.primary}/>
+                )
+            }}/>
+        </Tab.Navigator>
     )
 }

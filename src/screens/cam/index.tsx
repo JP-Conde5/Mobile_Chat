@@ -20,7 +20,7 @@ export function Cam(){
         return (
             <View style={styles.container}>
                 <Text>Você precisa dar permissãoa à câmera</Text>
-                <TouchableOpacity><Text>Permitir</Text></TouchableOpacity>
+                <TouchableOpacity onPress={requestPermission}><Text>Permitir</Text></TouchableOpacity>
             </View>
         )
     }
@@ -32,6 +32,7 @@ export function Cam(){
     async function takePicture(){
         if(refCamView.current){
             const picture = await refCamView.current.takePictureAsync({ imageType: 'jpg', quality: 0})
+            setPhoto(picture)
         }
     }
 
@@ -46,9 +47,9 @@ export function Cam(){
 
     if(photo){
         const save = require("../../assets/download.png")
-        const cancel = require("../../assets/cancel.png")
+        const cancel = require("../../assets/cancelar.png")
         return(
-            <ImageBackground source={{uri: photo.uri}}>
+            <ImageBackground style={styles.container} source={{uri: photo.uri}}>
                 <View>
                     <TouchableOpacity onPress={savePhoto}>
                         <Image source={save}/>
@@ -63,13 +64,13 @@ export function Cam(){
 
     const thread = require("../../assets/thread.png")
     return(
-        <View>
-            <CameraView facing={side} ref={refCamView}>
-                <View>
+        <View style={styles.container}>
+            <CameraView style={styles.camera} facing={side} ref={refCamView}>
+                <View style={styles.footer}>
                     <TouchableOpacity onPress={toogleCameraSide}>
-                        <Image source={thread}/> 
+                        <Image style={styles.image} source={thread}/> 
                     </TouchableOpacity>
-                    <TouchableOpacity onPress={takePicture}/>
+                    <TouchableOpacity style={styles.ball} onPress={takePicture}/>
                 </View>
             </CameraView>
         </View>

@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "chat",
+    "name": "ChatZap",
     "slug": "chat",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -9,7 +9,7 @@
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#9F4AE2"
     },
     "ios": {
       "supportsTablet": true
@@ -28,7 +28,9 @@
       [
         "expo-camera",
         {
-          "cameraPermission": "Permite ${PRODUCT_NAME) acessar a sua câmera."
+          "cameraPermission": "Permite ${PRODUCT_NAME) acessar a sua câmera.",
+          "microphonePermission": "Permita $(PRODUCT_NAME) acessar seu microfone.",
+          "recordAudioAndroid": true
         }
       ],
       [
@@ -37,6 +39,12 @@
           "photosPermission": "Permita $(PRODUCT_NAME) acessar suas fotos.",
           "savePhotosPermission": "Permita $(PRODUCT_NAME) salvar suas fotos.",
           "isAcessMediaLocationEnabled": true
+        }
+      ],
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "O aplicativo acessa suas fotos para qye você possa compartilhá-la com seus amigos."
         }
       ]
     ]

@@ -26,6 +26,7 @@ export function CadMessage({navigation}:MessageTypes){
                 const msg = err.response?.data as string
                 Alert.alert(msg)
             }
+            setLoading(false)
         } else{
             Alert.alert("Preencha todos os campos!!!")
         }
@@ -67,7 +68,6 @@ export function CadMessage({navigation}:MessageTypes){
                     </View>
                 </View>
             </KeyboardAvoidingView>
-            <View style={styles.footer}/>
         </ComponentBackground2>
     )
 }
