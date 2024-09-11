@@ -6,3 +6,5 @@ export { Register as ScreenRegister } from './register'
 export { ListMessage as ScreenListMessage } from './listMessage'
 export { CadMessage as ScreenCadMessage } from './cadMessage'
 export { Cam as ScreenCam } from './cam'
+export { QrCode as ScreenQrCode } from "./qrcode" 
+export { Photos as ScreenPhotos } from "./photos"

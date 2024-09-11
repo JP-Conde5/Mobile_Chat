@@ -1,12 +1,14 @@
 import {BottomTabNavigationProp, createBottomTabNavigator} from '@react-navigation/bottom-tabs'
-import {ScreenCam} from '../screens'
+import {ScreenCam, ScreenPhotos, ScreenQrCode} from '../screens'
 import {MessageNavigation} from './message.navigation'
 import { Entypo } from '@expo/vector-icons'
 import { colors } from '../styles/GlobalStyle'
-
+import { MaterialCommunityIcons } from '@expo/vector-icons'
 type MesCamTabParamList = {
     Mensagem: undefined
     Camera: undefined
+    Photos: undefined
+    QrCode: undefined
 }
 type MesCamScreenNavigationProp = BottomTabNavigationProp<MesCamTabParamList,'Mensagem'>
 export type MesCamTypes ={
@@ -30,6 +32,16 @@ export function MesCamNavigation(){
             <Tab.Screen name='Camera' component={ScreenCam} options={{
                 tabBarIcon: () => (
                     <Entypo name="camera" size={24} color={colors.primary}/>
+                )
+            }}/>
+            <Tab.Screen name="Photos" component={ScreenPhotos} options={{
+                tabBarIcon: () => (
+                    <Entypo name="image" size={24} color={colors.primary}/>
+                )
+            }}/>
+            <Tab.Screen name="QrCode" component={ScreenQrCode} options={{
+                tabBarIcon: () => (
+                    <MaterialCommunityIcons name="qrcode-scan" size={24} color={colors.primary}/>
                 )
             }}/>
         </Tab.Navigator>

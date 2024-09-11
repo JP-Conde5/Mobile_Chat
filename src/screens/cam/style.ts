@@ -11,25 +11,38 @@ export const styles = StyleSheet.create({
     },
     footer:{
         position: 'absolute',
-        bottom: 10,
+        bottom: 15,
         justifyContent: 'center',
         alignItems: 'center',
-        height: 10,
-        width: 200,
+        width: 400,
         flexDirection: 'row',
-
+        marginBottom: 20,
+    },
+    header:{
+        position: 'absolute',
+        top: 30,
+        justifyContent: 'space-around',
+        alignItems: 'center',
+        width: 400,
+        flexDirection: 'row',
+        marginBottom: 20,
     },
     ball:{
-        width: 10,
-        height: 10,
+        width: 40,
+        height: 40,
         backgroundColor: colors.primary,
         borderColor: colors.primary,
         borderWidth: 5,
-        borderRadius: 10,
-        marginRight: 10,
+        borderRadius: 20,
+        marginRight: 100,
+        marginLeft: 40,
     },
     image:{
-        width: 10,
-        height: 10, 
+        width: 30,
+        height: 30, 
+    },
+    imageIcon:{
+        width: 50,
+        height: 50
     }
 })

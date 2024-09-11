@@ -50,12 +50,12 @@ export function Cam(){
         const cancel = require("../../assets/cancelar.png")
         return(
             <ImageBackground style={styles.container} source={{uri: photo.uri}}>
-                <View>
+                <View style={styles.header}>
                     <TouchableOpacity onPress={savePhoto}>
-                        <Image source={save}/>
+                        <Image style={styles.imageIcon} source={save}/>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={() => setPhoto(undefined)}>
-                        <Image source={cancel} />
+                        <Image style={styles.imageIcon} source={cancel} />
                     </TouchableOpacity>
                 </View>
             </ImageBackground>

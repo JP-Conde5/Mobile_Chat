@@ -14,6 +14,13 @@ export function CadMessage({navigation}:MessageTypes){
     function handleChange(itemMessage:IMessage){
         setData({...data, ...itemMessage})
     }
+    interface IError{
+        errors:{
+            rule: string,
+            field: string,
+            message: string
+        }[]
+    }
     async function handleCadMessage(){
         if(data?.message && data.title){
             setLoading(true)
@@ -23,8 +30,8 @@ export function CadMessage({navigation}:MessageTypes){
                 navigation.navigate('ListMessage')
             } catch(error){
                 const err = error as AxiosError
-                const msg = err.response?.data as string
-                Alert.alert(msg)
+                const msg = err.response?.data as IError
+                Alert.alert(msg.errors.reduce((total, atual) => total + atual.message, ''))
             }
             setLoading(false)
         } else{

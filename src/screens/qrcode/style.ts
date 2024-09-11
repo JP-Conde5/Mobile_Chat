@@ -6,6 +6,12 @@ export const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
     },
-    
-
+    cam:{
+        flex: 0.5,
+        bottom: 0,
+    },
+    qrcode:{
+        flex: 0.5,
+        top: 0,
+    }
 })
