@@ -2,7 +2,7 @@ import { CameraView, CameraType, useCameraPermissions, CameraCapturedPicture } f
 import { useRef, useState } from "react"
 import { Text, View, TouchableOpacity, Alert, ImageBackground, Image } from 'react-native'
 import * as MediaLibrary from "expo-media-library"
-import { ComponentHeader, ComponentLoading } from "../../components";
+import { ComponentBackground2, ComponentHeader, ComponentLoading } from "../../components";
 import { styles } from "./style"
 
 export function Cam(){
@@ -18,10 +18,14 @@ export function Cam(){
     
     if(!permission.granted){
         return (
-            <View style={styles.container}>
-                <Text>Você precisa dar permissãoa à câmera</Text>
-                <TouchableOpacity onPress={requestPermission}><Text>Permitir</Text></TouchableOpacity>
+            <ComponentBackground2>
+            <View style={styles.windowPermission}>
+            <ComponentHeader/>
+
+                <Text style={styles.text}>Você precisa dar permissãoa à câmera</Text>
+                <TouchableOpacity style={styles.button} onPress={requestPermission}><Text>Permitir</Text></TouchableOpacity>
             </View>
+            </ComponentBackground2>
         )
     }
 
@@ -49,10 +53,10 @@ export function Cam(){
         const save = require("../../assets/download.png")
         const cancel = require("../../assets/cancelar.png")
         return(
-            <>
+            <>                
             <ComponentHeader/>
             <ImageBackground style={styles.container} source={{uri: photo.uri}}>
-                <View style={styles.header}>
+                <View style={styles.footerPhoto}>
                     <TouchableOpacity onPress={savePhoto}>
                         <Image style={styles.imageIcon} source={save}/>
                     </TouchableOpacity>

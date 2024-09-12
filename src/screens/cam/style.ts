@@ -5,6 +5,7 @@ export const styles = StyleSheet.create({
     container:{
         flex: 1,
         justifyContent: 'center',
+        alignItems: 'center',
     },
     camera:{
         flex: 1,
@@ -18,9 +19,9 @@ export const styles = StyleSheet.create({
         flexDirection: 'row',
         marginBottom: 20,
     },
-    header:{
+    footerPhoto:{
         position: 'absolute',
-        top: 30,
+        bottom: 10,
         justifyContent: 'space-around',
         alignItems: 'center',
         width: 400,
@@ -44,5 +45,25 @@ export const styles = StyleSheet.create({
     imageIcon:{
         width: 50,
         height: 50
+    },
+    button:{
+        margin: 10,
+        padding: 10,
+        borderRadius: 20,
+        backgroundColor: colors.secondary
+    },
+    windowPermission:{
+        width: 100,
+        backgroundColor: colors.primaryTransp,
+        borderRadius: 20,
+        padding: 20,
+    },
+    text:{
+        fontSize: 20,
+        color: colors.primary,
+        fontWeight: 'bold',
+    },
+    back:{
+        color: colors.black
     }
 })

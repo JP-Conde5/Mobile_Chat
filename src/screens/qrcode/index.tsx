@@ -3,7 +3,7 @@ import {BarcodeScanningResult, CameraView, useCameraPermissions } from "expo-cam
 import { useAuth } from "../../hook/index";
 import { useState } from "react";
 import { Alert, Image, Text, TouchableOpacity, View } from "react-native";
-import { ComponentLoading } from "../../components";
+import { ComponentBackground2, ComponentHeader, ComponentLoading } from "../../components";
 import { styles } from "./style";
 
 export function QrCode(){
@@ -16,32 +16,43 @@ export function QrCode(){
         )
     }else if(!permission.granted){
         return(
-            <View style={styles.container}>
-                <Text>Você precisa dar acesso a câmera</Text>
-                <TouchableOpacity onPress={requestPermission}><Text>Permitir</Text></TouchableOpacity>
+            <ComponentBackground2>
+            <ComponentHeader/>
+            <View style={styles.windowPermission}>
+                <Text style={styles.text}>Você precisa dar permissãoa à câmera</Text>
+                <TouchableOpacity style={styles.button} onPress={requestPermission}><Text>Permitir</Text></TouchableOpacity>
             </View>
+            </ComponentBackground2>
         )
     }
     function handleBarcodeScanner({data}: BarcodeScanningResult){
-        Alert.alert(`Olá ${data}`)
+        Alert.alert(`Deseja se tornar amigo ${data}`)
         setScanned(true)
     }
-    return(
-        <View style={styles.container}>
-            {user && user.user.name && (
-                <Image source={{uri: `https://image-charts.com/chart?chs=500x500&cht=qr&chl=${user.user.name}&choe=UTF-8`}}/>
-            )}
-            {!scanned ? (
-                <CameraView 
-                    barcodeScannerSettings={{barcodeTypes: ['qr']}}
-                    onBarcodeScanned={handleBarcodeScanner}
-                    style={styles.cam}
-                />
-            ) : (
-                <TouchableOpacity onPress={() => setScanned(false)}>
-                    <Text>Scanear novamente</Text>
+    if(scanned){
+        return(
+            <ComponentBackground2>
+                <ComponentHeader/>
+                {user && user.user.name && (
+                    <Image style={styles.qrcode} source={{uri: `https://image-charts.com/chart?chs=500x500&cht=qr&chl=${user.user.name}&choe=UTF-8`}}/>
+                 )}
+                <TouchableOpacity style={styles.button} onPress={() => setScanned(false)}>
+                    <Text style={styles.text}>Scanear novamente</Text>
                 </TouchableOpacity>
+            </ComponentBackground2>
+        )
+    }
+    return(
+        <ComponentBackground2>
+            <ComponentHeader/>
+            {user && user.user.name && (
+                <Image style={styles.qrcode} source={{uri: `https://image-charts.com/chart?chs=500x500&cht=qr&chl=${user.user.name}&choe=UTF-8`}}/>
             )}
-        </View>
+            <CameraView 
+                barcodeScannerSettings={{barcodeTypes: ['qr']}}
+                onBarcodeScanned={handleBarcodeScanner}
+                style={styles.cam}
+            /> 
+        </ComponentBackground2>
     )
 }  

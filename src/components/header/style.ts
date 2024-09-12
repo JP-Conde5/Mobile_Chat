@@ -13,5 +13,6 @@ export const styles = StyleSheet.create({
         borderRadius: 20,
         shadowColor: colors.black,
         shadowRadius: 20,
+        marginBottom: 5,
     },
 })

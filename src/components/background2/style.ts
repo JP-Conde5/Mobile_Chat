@@ -4,7 +4,6 @@ import { colors } from "../../styles/GlobalStyle"
 export const styles = StyleSheet.create({
     background: {
         backgroundColor: colors.darkSecondary,
-        justifyContent: 'center',
         alignItems: 'center',
         flex: 1,
     },
