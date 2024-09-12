@@ -3,7 +3,6 @@ import {BarcodeScanningResult, CameraView, useCameraPermissions } from "expo-cam
 import { useAuth } from "../../hook/index";
 import { useState } from "react";
 import { Alert, Image, Text, TouchableOpacity, View } from "react-native";
-//import { styles } from "./style";  
 import { ComponentLoading } from "../../components";
 import { styles } from "./style";
 

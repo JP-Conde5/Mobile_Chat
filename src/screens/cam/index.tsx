@@ -2,7 +2,7 @@ import { CameraView, CameraType, useCameraPermissions, CameraCapturedPicture } f
 import { useRef, useState } from "react"
 import { Text, View, TouchableOpacity, Alert, ImageBackground, Image } from 'react-native'
 import * as MediaLibrary from "expo-media-library"
-import { ComponentLoading } from "../../components";
+import { ComponentHeader, ComponentLoading } from "../../components";
 import { styles } from "./style"
 
 export function Cam(){
@@ -49,6 +49,8 @@ export function Cam(){
         const save = require("../../assets/download.png")
         const cancel = require("../../assets/cancelar.png")
         return(
+            <>
+            <ComponentHeader/>
             <ImageBackground style={styles.container} source={{uri: photo.uri}}>
                 <View style={styles.header}>
                     <TouchableOpacity onPress={savePhoto}>
@@ -59,12 +61,14 @@ export function Cam(){
                     </TouchableOpacity>
                 </View>
             </ImageBackground>
+            </>
         )
     }
 
     const thread = require("../../assets/thread.png")
     return(
         <View style={styles.container}>
+            <ComponentHeader/>
             <CameraView style={styles.camera} facing={side} ref={refCamView}>
                 <View style={styles.footer}>
                     <TouchableOpacity onPress={toogleCameraSide}>

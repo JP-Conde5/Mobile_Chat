@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { ScrollView, View, Text, Image, TouchableOpacity } from 'react-native';
 import * as MediaLibary from "expo-media-library";
 import * as ImagePicker from "expo-image-picker";
-import { ComponentAlbum } from "../../components";
+import { ComponentAlbum, ComponentBackground2, ComponentHeader } from "../../components";
 import { styles } from './style';
 
 export function Photos(){
@@ -30,16 +30,17 @@ export function Photos(){
         }
     }
     return(
-        <View style={styles.container}>
-            <TouchableOpacity onPress={pickImage}><Text>Abrir Imagem</Text></TouchableOpacity>
-            <View>
+        <ComponentBackground2>
+            <ComponentHeader/>
+            <TouchableOpacity style={styles.button} onPress={pickImage}><Text style={styles.text}>Abrir Imagem</Text></TouchableOpacity>
+            <View style={styles.containerImage}>
                 {image && <Image source={{uri: image}}/>}
             </View>
-            <TouchableOpacity onPress={getAlbums}><Text>Buscar Albuns</Text></TouchableOpacity>
+            <TouchableOpacity style={styles.button} onPress={getAlbums}><Text style={styles.text}>Buscar Albuns</Text></TouchableOpacity>
             <ScrollView>
                 {albums && albums.map((album) => <ComponentAlbum album={album}/>)}
             </ScrollView>
-        </View>
+        </ComponentBackground2>
     
     )
 }
